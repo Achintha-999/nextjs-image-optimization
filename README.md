@@ -14,23 +14,76 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Once the server is running, open http://localhost:3000 in your browser to view the application.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+You can start editing the application by modifying the file located at page.jsx. The page will automatically update as you make changes.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Adding Images
 
-## Learn More
+ ## Adding Local Images
+Place your image files in the public/ directory of your project. For example, you can add an image at public/4.jpg.
 
-To learn more about Next.js, take a look at the following resources:
+Import the image in your component using the next/image component:
+import Image from "next/image";
+import img1 from "../../public/4.jpg";
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+export default function Home() {
+  return (
+    <Image
+      src={img1}
+      alt="Local Image"
+      width={1000}
+      height={1000}
+    />
+  );
+}
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Adding Remote Images
 
-## Deploy on Vercel
+To use remote images, you need to configure the next.config.mjs file to allow specific domains. Add the following configuration:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  images: {
+    domains: ["images.unsplash.com"], // Add your allowed domains here
+  },
+};
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+export default nextConfig;
+
+Then, use the next/image component to render the remote image:
+
+import Image from "next/image";
+
+export default function Home() {
+  return (
+    <Image
+      src="https://images.unsplash.com/photo-1526779259212-939e64788e3c?q=80&w=2074&auto=format&fit=crop"
+      alt="Remote Image"
+      width={1000}
+      height={1000}
+    />
+  );
+}
+
+Notes on Image Optimization
+
+Local Images: Automatically optimized by Next.js when placed in the public/ directory.
+Remote Images: Ensure the domain is added to the domains array in next.config.mjs for optimization.
+
+## Project Structure
+
+The project structure is as follows:
+myfirstnextapp/
+├── .gitignore
+├── .next/
+├── eslint.config.mjs
+├── jsconfig.json
+├── next.config.mjs
+├── package.json
+├── public/
+│   └── 4.jpg
+├── README.md
+├── src/
+│   └── app/
+│       └── page.jsx

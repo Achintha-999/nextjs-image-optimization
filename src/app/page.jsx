@@ -1,22 +1,33 @@
-import Image from "next/image";
-import styles from "./page.module.css";
-import Link from "next/link";
+import Image from "next/image"
+import img1 from "../../public/4.jpg"
 
 
 export default function Home() {
+
   return (
     <>
-   <h1>Hello world</h1>
-   <ul>
-    <li><Link href="/">Home</Link></li>
-    <li><Link href="/services">Services</Link></li>
-    <li><Link href="/products">Products</Link></li>
-    <li><Link href="/contact">Contact us</Link></li>
-    <li><Link href="/about/branches">Branches</Link></li>
-    <li><Link href="/products/vegis">Vegis page</Link></li>
-   </ul>
+   <h1>Image component </h1>
 
-   <Link href="https://nextjs.org/" target="_blank">NextJS Site</Link>
+   {/* <img src={img1.src} alt="" /> */}
+
+   <Image 
+   
+   src={"https://images.unsplash.com/photo-1526779259212-939e64788e3c?q=80&w=2074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}
+   alt="Sample img"
+   //style={{width:"100%", objectFit:"cover"}}
+   className="imgcont"
+
+   width={1000}
+   height={1000}
+   />
+
+   <Image
+   src={img1}
+
+   >
+
+   </Image>
+
     </>
   )
 }
