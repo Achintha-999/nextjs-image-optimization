@@ -58,7 +58,7 @@ import Image from "next/image";
 export default function Home() {
   return (
     <Image
-      src="https://images.unsplash.com/photo-1526779259212-939e64788e3c?q=80&w=2074&auto=format&fit=crop"
+ src="https://images.unsplash.com/photo-1526779259212-939e64788e3c?q=80&w=2074&auto=format&fit=crop"
       alt="Remote Image"
       width={1000}
       height={1000}
